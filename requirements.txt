@@ -1,0 +1,9 @@
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+chromadb
+python-dotenv
+rich
+click
+requests
