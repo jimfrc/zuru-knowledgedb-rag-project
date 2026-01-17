@@ -1,3 +1,61 @@
+Local Knowledge Base Technical Documentation
+1. Project Overview
+This project is a knowledge base system built based on local Markdown documents, providing retrieval and Q&A functionality through a CLI interface. The main features include:
+
+Efficient document retrieval based on vector storage
+Support for multiple LLM APIs (Deepseek, Alibaba Cloud Bailian, etc.)
+Intuitive CLI command-line interface
+Option to return only answers (excluding source information)
+
+2. Installation and Configuration
+2.1 Environment Requirements
+
+Python 3.8+
+Valid API keys (Deepseek and Alibaba Cloud Bailian)
+
+2.2 Installing Dependencies
+# Enter the project directory
+```
+cd local_knowledge_base
+
+# Install dependencies
+py -m pip install -r requirements.txt
+```
+2.3 Configuring API Keys
+Create a .env file in the project root directory and add the following content:
+DEEPSEEK_API_KEY=your_deepseek_api_key
+DASHSCOPE_API_KEY=your_aliyun_dashscope_api_key
+```
+DEEPSEEK_API_KEY: Deepseek chat model API key
+DASHSCOPE_API_KEY: Alibaba Cloud Bailian embedding model API key
+```
+3. Usage Guide
+3.1 Building the Knowledge Base
+Place Markdown documents into a directory, then execute the build command:
+Replace "address of database" with the local knowledge base address
+```
+py -m src.main build --kb-dir "address of database" --persist-dir "./chroma_db"
+
+--kb-dir: Directory containing Markdown documents
+--persist-dir: Vector storage persistence directory (optional, default: ./chroma_db)
+```
+3.2 Single Question Query
+```
+# Return only answers (excluding sources)
+py -m src.main ask "What's Coding Style？" --answer-only
+# Or use shorthand
+py -m src.main ask "What's Coding Style？" -a
+```
+3.3 Interactive Chat
+```
+py -m src.main chat
+```
+After entering interactive mode, you can ask questions continuously:
+
+Press Enter after entering a question to get an answer
+Type exit, quit, or q to exit the chat
+
+
 # 本地知识库技术文档
 ## 1. 项目概述
 本项目是一个基于本地Markdown文档构建的知识库系统，通过CLI界面提供检索问答功能。主要特点包括：
